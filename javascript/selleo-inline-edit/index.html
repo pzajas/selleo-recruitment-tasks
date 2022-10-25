@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      let updatedInputValue = ""
+
+      const createSpan = (text = "initial input") => {
+        const span = document.body.appendChild(document.createElement("span"))
+        span.id = "span"
+        span.innerText = text
+
+        span.addEventListener("click", toggleSpanOrInput)
+      }
+
+      const toggleSpanOrInput = e => {
+        const span = document.getElementById("span")
+        document.body.removeChild(span)
+
+        const input = document.body.appendChild(document.createElement("input"))
+        input.id = "input"
+        input.value = ""
+        input.focus()
+        input.keyup = handlePressEnterSubmitInput()
+
+        input.addEventListener("focusout", handleFocusOut)
+        input.addEventListener("change", updateInputValue)
+      }
+
+      createSpan()
+
+      const handleFocusOut = () => {
+        if (updatedInputValue.length != 0) {
+          document.body.removeChild(input)
+        } else alert("Type something bro!")
+
+        createSpan(updatedInputValue)
+      }
+
+      function updateInputValue(e) {
+        updatedInputValue = e.target.value
+      }
+
+      function handlePressEnterSubmitInput() {
+        let element = document.getElementById("input")
+        element.addEventListener("keyup", function (event) {
+          if (event.keyCode == 13) {
+            handleFocusOut()
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
