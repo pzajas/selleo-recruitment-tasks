@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 25%;
+  padding: 0.5rem;
+}
+
+.header {
+  background-color: #181818;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.search-input {
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 1rem 0rem 1rem 0.5rem;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+  outline: none;
+}
+
+.list-item {
+  list-style: none;
+  padding: 0.3rem;
+  border: 1px solid black;
+  margin-bottom: 0.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reset-button {
+  background-color: pink;
+  border: 1px solid black;
+  padding: 0.5rem;
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.3rem;
+}
+
+.reset-button:hover {
+  background-color: crimson;
+  color: white;
+  transition: all ease-in-out 0.5s;
+}
+
+.text-green {
+  color: green;
+}
