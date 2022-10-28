@@ -1,7 +1,7 @@
 const input = document.querySelector("[search-input]")
 const ul = document.querySelector("[search-list]")
 
-const colors = ["yellow", "blue", "green", "pink", "red", "grey"]
+const colors = ["yellow", "blue", "green", "pink", "red", "violet", "black", "white", "orange", "teal"]
 
 const populateList = (array, element) => {
   array.forEach(item => {

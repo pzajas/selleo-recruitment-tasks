@@ -4,21 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Litol Big Microblog</title>
   </head>
   <body>
-    <header>
-      <h1>Litol Big Microblog</h1>
-    </header>
+    <div class="app-container">
+      <header>
+        <h1>Litol Big Microblog</h1>
+      </header>
 
-    <form>
-      <textarea type="text" class="blog-textarea"></textarea>
-      <button class="submit-button" type="submit">Submit</button>
+      <form>
+        <textarea type="text" class="blog-textarea"></textarea>
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+
       <p class="blogpost-counter"></p>
-    </form>
 
-    <div class="blogpost-container">
-      <ul class="blogpost-list"></ul>
+      <div class="blogpost-container">
+        <ul class="blogpost-list"></ul>
+      </div>
     </div>
   </body>
   <script src="./app.js"></script>

@@ -9,20 +9,23 @@
     <title>Search</title>
   </head>
   <body>
-    <div class="header">Search Colors</div>
+    <div class="app-container">
+      <div class="header">Search Colors</div>
 
-    <div id="searchbox">
-      <input
-        type="text"
-        class="search-input"
-        onkeyup="filterColorsOrResetSearch('none')"
-        placeholder="Search for names.."
-        search-input
-      />
+      <div id="searchbox">
+        <input
+          type="text"
+          class="search-input"
+          onkeyup="filterColorsOrResetSearch('none')"
+          placeholder="Search for names..."
+          autofocus
+          search-input
+        />
+      </div>
+
+      <ul id="search-list" search-list></ul>
+
+      <button class="reset-button" onclick="filterColorsOrResetSearch('')">RESET</button>
     </div>
-
-    <ul id="search-list" search-list></ul>
-
-    <button class="reset-button" onclick="filterColorsOrResetSearch('')">RESET</button>
   </body>
 </html>

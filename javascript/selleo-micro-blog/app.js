@@ -10,14 +10,8 @@ const selectOptions = ["Rate", 1, 2, 3, 4, 5]
 
 updateDisplay()
 
-// FUNCTIONS
-
 const handleAddPost = e => {
   e.preventDefault()
-
-  // CONSTS AND LETS
-
-  let rating = 0
 
   //ADD A NEW POST
   const postContainer = document.createElement("div")
@@ -86,11 +80,11 @@ function updateDisplay() {
 }
 
 window.onload = function (e) {
-  for (let i = 0; i > 5; i++) {
+  for (let i = 0; i < 5; i++) {
     handleAddPost(e)
   }
 }
-//EVENTS
 
+//EVENTS
 submitButton.addEventListener("click", handleAddPost)
 blogPostList.addEventListener("click", handleDeletePost)
