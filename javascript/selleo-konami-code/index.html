@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>Sweet kittens</header>
+    <ul list-container></ul>
+  </body>
+  <script>
+    const issuesContainer = document.createElement("div")
+    const listContainer = document.createElement("ul")
+
+    listContainer.id = "ul"
+
+    document.body.appendChild(issuesContainer)
+
+    let keysPressed = []
+    let pressTimeStamp = []
+    const konamiCode = "injects3crets"
+
+    //EVENT KEYUP LISTENER
+    window.addEventListener("keyup", e => {
+      const searchKonamiCode = () => {
+        keysPressed.push(e.key)
+        pressTimeStamp.unshift(e.timeStamp)
+        keysPressed.splice(-konamiCode.length - 1, keysPressed.length - konamiCode.length)
+      }
+
+      //ADD ESCAPE FUNCTIONALITY
+      e.key !== "Escape" ? searchKonamiCode() : (keysPressed = [])
+
+      //ADD TIMESTAMP FUNCTIONALITY
+      pressTimeStamp.length > 2 ? pressTimeStamp.splice(pressTimeStamp.length - 1) : null
+      if (pressTimeStamp[0] > pressTimeStamp[1] + 5000) {
+        keysPressed = []
+        keysPressed.push(e.key)
+      }
+
+      //HIDE APPENDED ISSUES
+      if (keysPressed.length === konamiCode.length) {
+        setTimeout(() => {
+          document.getElementById("ul").innerHTML = ""
+          keysPressed = []
+        }, 15000)
+      }
+
+      keysPressed.join("").includes(konamiCode) ? fetchIssueData() : null
+    })
+
+    //FETCH DATA FOR ISSUE CARD
+    const fetchIssueData = () => {
+      fetch("https://api.github.com/repos/elixir-lang/elixir/issues")
+        .then(res => res.json())
+        .then(data => {
+          for (let i = 0; i < 5; i++) {
+            let author = data[i].user.login
+            let title = data[i].title
+            issuesContainer.appendChild(listContainer)
+            const issueCard = document.createElement("li")
+
+            issueCard.innerText = `Author: ${author}, Title: ${title}`
+            listContainer.appendChild(issueCard)
+          }
+        })
+    }
+  </script>
+</html>
